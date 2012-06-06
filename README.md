@@ -1,11 +1,15 @@
-elasticsearch-by-example
+ElasticSearch by Example
 ========================
 
-# Usage
+Usage
+-----
+
 Console 1:
-cd elasticsearch-by-example
-foreman start
+
+    cd elasticsearch-by-example
+    foreman start
 
 Console 2:
-cd elasticsearch-by-example
-./bin/run queries/text
+
+    cd elasticsearch-by-example
+    ./bin/run queries/text
