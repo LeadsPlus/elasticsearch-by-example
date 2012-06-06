@@ -1,7 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    brewdler (0.1.0)
+      commander
     coderay (1.0.6)
+    commander (4.1.2)
+      highline (~> 1.6.11)
+    highline (1.6.12)
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
@@ -18,5 +23,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  brewdler
   httparty
   pry
