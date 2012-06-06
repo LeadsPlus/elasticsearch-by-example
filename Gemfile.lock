@@ -6,6 +6,8 @@ GEM
     coderay (1.0.6)
     commander (4.1.2)
       highline (~> 1.6.11)
+    foreman (0.46.0)
+      thor (>= 0.13.6)
     highline (1.6.12)
     httparty (0.8.3)
       multi_json (~> 1.0)
@@ -18,11 +20,13 @@ GEM
       method_source (~> 0.7.1)
       slop (>= 2.4.4, < 3)
     slop (2.4.4)
+    thor (0.15.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   brewdler
+  foreman
   httparty
   pry
