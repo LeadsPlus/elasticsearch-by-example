@@ -29,7 +29,7 @@ Clone the project repository from [GitHub](http://github.com/):
     bundle install
 
 If you have already installed [ElasticSearch](http://elasticsearch.org) local
-or on a remote machine youre done.
+or on a remote machine you're done.
 
 To install [ElasticSearch](http://elasticsearch.org) on Mac with
 [Homebrew](http://mxcl.github.com/homebrew/) type:
@@ -43,7 +43,7 @@ Configuration
 _ElasticSearch by Example_ uses its own [ElasticSearch](http://elasticsearch.org) configuration file stored in `config/elasticsearch.yml`.
 
 To use a remote [ElasticSearch](http://elasticsearch.org) installation
-please customize the host and port variables in the `bin/run` script.
+please customize the `host` and `port` variables in the `bin/run` script.
 
 
 Usage
