@@ -23,11 +23,11 @@ index_refresh_endpoint = "#{index_url}/_refresh"
 type_search_endpoint   = "#{type_url}/_search"
 
 # Path to example directory read from console parameter
-path  = "examples/#{ARGV[0]}"
+path = "examples/#{ARGV[0]}"
 
 # Remove index from last run if exists
-HTTParty.delete(index_url)
-puts "Delete index : #{index_url}"
+index_delete_response_code = HTTParty.delete(index_url).response.code
+puts "Delete index : #{index_url}" if index_delete_response_code == "200"
 
 # Create index. Explicit index creation is especially important when applying
 # a custom mapping.
