@@ -1,12 +1,12 @@
 [
   {
     "author" : "Robert Moszczynski",
-    "title" : "Test Document",
-    "date" : "2012-06-06T20:19:00"
+    "title"  : "Example Document",
+    "date"   : "2012-06-06T20:19:00"
   },
   {
     "author" : "Robert Moszczynski",
-    "title" : "Another Test Document",
-    "date" : "2012-06-06T20:20:00"
+    "title"  : "Another Example Document",
+    "date"   : "2012-06-06T20:20:00"
   }
 ]

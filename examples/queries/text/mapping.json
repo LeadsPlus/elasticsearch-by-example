@@ -1,0 +1,9 @@
+{
+  "example" : {
+    "properties" : {
+      "author" : {"type" : "string", "store" : "yes"},
+      "title"  : {"type" : "string"},
+      "date"   : {"type" : "date"}
+    }
+  }
+}

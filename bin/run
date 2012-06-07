@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-require 'json'
 require 'httparty'
+require 'json'
 require 'pp'
 
 # ElasticSearch location
@@ -12,26 +12,53 @@ port  = '9200'
 index = 'elasticsearch-by-example'
 type  = 'example'
 
-base  = "http://#{host}:#{port}"
+# URLs
+base_url  = "http://#{host}:#{port}"
+index_url = "#{base_url}/#{index}"
+type_url  = "#{index_url}/#{type}"
 
-# Path to example depending on console parameter
+# Endpoints
+type_mapping_endpoint  = "#{type_url}/_mapping"
+index_refresh_endpoint = "#{index_url}/_refresh"
+type_search_endpoint   = "#{type_url}/_search"
+
+# Path to example directory read from console parameter
 path  = "examples/#{ARGV[0]}"
 
-# Remove index. A new index will be created while indexing documents.
-HTTParty.delete("#{base}/#{index}")
+# Remove index from last run if exists
+HTTParty.delete(index_url)
+puts "Delete index : #{index_url}"
 
-# Index documents
-docs = JSON.parse(File.read("#{path}/docs.json"))
-docs.each_with_index do |doc, i|
-  HTTParty.put("#{base}/#{index}/#{type}/#{i}", {:body => doc.to_json})
+# Create index. Explicit index creation is especially important when applying
+# a custom mapping.
+HTTParty.put(index_url)
+
+# Apply mapping if present, else ElasticSearch will use default mapping.
+mapping_file_path = "#{path}/mapping.json"
+if File.exists?(mapping_file_path)
+  mapping = File.read(mapping_file_path)
+  HTTParty.put(type_mapping_endpoint, {:body => mapping})
+  puts "Put mapping  : #{type_mapping_endpoint}"
 end
 
-# Refresh index
-HTTParty.post("#{base}/#{index}/_refresh")
+# Index documents
+docs_file_path = "#{path}/docs.json"
+docs = JSON.parse(File.read(docs_file_path))
+docs.each_with_index do |doc, i|
+  document_url = "#{type_url}/#{i}"
+  HTTParty.put(document_url, {:body => doc.to_json})
+  puts "Put document : #{document_url}"
+end
+
+# Refresh index to make indexed documents available for search
+HTTParty.post(index_refresh_endpoint)
+puts "Post refresh : #{index_refresh_endpoint}"
 
 # Query index
-query = File.read("#{path}/query.json")
-response = HTTParty.post("#{base}/#{index}/#{type}/_search", {:body => query})
-puts "Result\n"
+query_file_path = "#{path}/query.json"
+query = File.read(query_file_path)
+response = HTTParty.post(type_search_endpoint, {:body => query})
+puts "Post search  : #{type_search_endpoint}"
+puts "Result"
 puts "------"
 pp response.parsed_response
