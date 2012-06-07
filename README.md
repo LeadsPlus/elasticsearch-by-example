@@ -31,7 +31,8 @@ Clone the project repository from [GitHub](http://github.com/):
 If you have already installed [ElasticSearch](http://elasticsearch.org) local
 or on a remote machine youre done.
 
-To install [ElasticSearch](http://elasticsearch.org) on Mac with Homebrew type:
+To install [ElasticSearch](http://elasticsearch.org) on Mac with
+[Homebrew](http://mxcl.github.com/homebrew/) type:
 
     brewdle install
 
