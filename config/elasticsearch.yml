@@ -135,8 +135,6 @@ index.number_of_replicas: 0
 # Use the Index Status API (<http://localhost:9200/A/_status>) to inspect
 # the index status.
 
-index.store.type: memory
-
 #################################### Paths ####################################
 
 # Path to directory containing configuration (this file and logging.yml):
