@@ -1,7 +1,7 @@
 ElasticSearch by Example
 ========================
 
-ElasticSearch by Example is a simple framework to learn and play with
+_ElasticSearch by Example_ is a simple framework to learn and play with
 [ElasticSearch](http://elasticsearch.org).
 
 It will help you get started in [ElasticSearch](http://elasticsearch.org)
@@ -40,7 +40,7 @@ To install [ElasticSearch](http://elasticsearch.org) on Mac with
 Configuration
 -------------
 
-ElasticSearch by Example uses its own [ElasticSearch](http://elasticsearch.org) configuration file stored in `config/elasticsearch.yml`.
+_ElasticSearch by Example_ uses its own [ElasticSearch](http://elasticsearch.org) configuration file stored in `config/elasticsearch.yml`.
 
 To use a remote [ElasticSearch](http://elasticsearch.org) installation
 please customize the host and port variables in the `bin/run` script.
@@ -49,7 +49,7 @@ please customize the host and port variables in the `bin/run` script.
 Usage
 -----
 
-To use ElasticSearch by Example open two console windows.
+To use _ElasticSearch by Example_ open two console windows.
 
 Console 1:
 
