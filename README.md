@@ -1,15 +1,68 @@
 ElasticSearch by Example
 ========================
 
+ElasticSearch by Example is a simple framework to learn and play with ElasticSearch.
+
+It will help you get started in ElasticSearch and provide a sandbox for
+experimentation and comparison of features.
+
+Each example contains a readme file with the key information on the feature,
+sample data, a mapping file and a search query. You can see the output directly
+into the console.
+
+It is important that the program is kept as simple as possible. A ElasticSearch
+beginner should easily understand each step.
+
+I have deliberately used raw JSON structures to facilitate communication with
+ElasticSearch using the REST API to make it clear. There are no abstractions to
+hide details.
+
+
+Installation
+------------
+
+Clone the project repository from GitHub:
+
+    git clone git://github.com/rmoszczynski/elasticsearch-by-example.git
+    cd elasticsearch-by-example
+    bundle install
+
+If you have already installed ElasticSearch local or on a remote machine
+youre done.
+
+To install ElasticSearch on Mac with Homebrew type:
+
+    brewdle install
+
+
+Configuration
+-------------
+
+ElasticSearch by Example uses its own ElasticSearch configuration file stored in
+`config/elasticsearch.yml`.
+
+To use a remote ElasticSearch installation please customize the host and
+port variables in the `bin/run` script.
+
+
 Usage
 -----
 
+To use ElasticSearch by Example open two console windows.
+
 Console 1:
 
-    cd elasticsearch-by-example
     foreman start
 
 Console 2:
 
-    cd elasticsearch-by-example
     ./bin/run queries/text
+
+As you can see the run script takes one parameter a path to a example directory
+relativ to `examples` directory in the root of this project.
+
+
+Links
+-----
+* [Project Home](https://github.com/rmoszczynski/elasticsearch-by-example)
+* [ElasticSearch Home](http://www.elasticsearch.org/)
