@@ -2,23 +2,23 @@
 
 require 'json'
 require 'httparty'
+require 'pp'
 
-example = ARGV[0]
-path    = "examples/#{example}"
+# ElasticSearch location
+host  = 'localhost'
+port  = '9200'
 
-host    = 'localhost'
-port    = '9200'
-index   = 'elasticsearch-by-example'
-type    = 'example'
+# Index and document type name
+index = 'elasticsearch-by-example'
+type  = 'example'
 
-base    = "http://#{host}:#{port}"
+base  = "http://#{host}:#{port}"
 
-# Show info
-# Todo: enable/disable info with command line parameter.
-puts "\n"
-puts "Information:"
-puts File.read("#{path}/info.md")
-puts "\n"
+# Path to example depending on console parameter
+path  = "examples/#{ARGV[0]}"
+
+# Remove index. A new index will be created while indexing documents.
+HTTParty.delete("#{base}/#{index}")
 
 # Index documents
 docs = JSON.parse(File.read("#{path}/docs.json"))
@@ -32,9 +32,6 @@ HTTParty.post("#{base}/#{index}/_refresh")
 # Query index
 query = File.read("#{path}/query.json")
 response = HTTParty.post("#{base}/#{index}/#{type}/_search", {:body => query})
-# Todo: show results
-puts "Response:\n"
-puts "#{response.parsed_response["hits"]["total"]} hits"
-
-# Remove index
-HTTParty.delete("#{base}/#{index}")
+puts "Result\n"
+puts "------"
+pp response.parsed_response
