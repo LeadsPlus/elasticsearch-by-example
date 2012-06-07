@@ -16,7 +16,7 @@ A [ElasticSearch](http://elasticsearch.org) beginner should easily understand ea
 
 I have deliberately used raw [JSON](http://www.json.org/) structures to facilitate communication with [ElasticSearch](http://elasticsearch.org) using the
 [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) API to make
-it clear. There are no abstractions to hide details
+it clear. There are no abstractions to hide details.
 
 
 Installation
@@ -59,8 +59,8 @@ Console 2:
 
     ./bin/run queries/text
 
-As you can see the `bin/run` script takes one parameter, a path to a example directory
-relativ to the `examples/` directory in the root of this project.
+As you can see the `bin/run` script takes one parameter, a path to a selected
+example directory relativ to the `examples/` directory in the root of this project.
 
 
 Links
