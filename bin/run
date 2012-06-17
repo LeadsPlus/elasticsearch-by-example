@@ -5,17 +5,17 @@ require 'json'
 require 'pp'
 
 # ElasticSearch location
-host  = 'localhost'
-port  = '9200'
+HOST  = 'localhost'
+PORT  = '9200'
 
 # Index and document type name
-index = 'elasticsearch-by-example'
-type  = 'example'
+INDEX = 'elasticsearch-by-example'
+TYPE  = 'example'
 
 # URLs
-base_url  = "http://#{host}:#{port}"
-index_url = "#{base_url}/#{index}"
-type_url  = "#{index_url}/#{type}"
+base_url  = "http://#{HOST}:#{PORT}"
+index_url = "#{base_url}/#{INDEX}"
+type_url  = "#{index_url}/#{TYPE}"
 
 # Endpoints
 type_mapping_endpoint  = "#{type_url}/_mapping"
