@@ -60,7 +60,11 @@ Console 2:
     bin/run queries/text
 
 As you can see the `bin/run` script takes one parameter, a path to a selected
-example directory relativ to the `examples/` directory in the root of this project.
+example directory relativ to the `examples` directory in the root of this project.
+
+You can list all examples by using the `list` parameter:
+
+  bin/run list
 
 
 Links

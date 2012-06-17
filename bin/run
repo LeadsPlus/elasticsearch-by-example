@@ -4,6 +4,15 @@ require 'httparty'
 require 'json'
 require 'pp'
 
+# List available examples and exit
+if ARGV[0] == 'list'
+  Dir.glob("**/query.json") do |example|
+    puts example.split('/')[1..-2].join('/')
+  end
+
+  exit
+end
+
 # ElasticSearch location
 HOST  = 'localhost'
 PORT  = '9200'
