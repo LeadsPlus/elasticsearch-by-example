@@ -5,6 +5,7 @@ Facets provide aggregated data based on a search query.
 
 ## Structure
 
+```javascript
 {
   "query"  : { ... },
   "facets" : {
@@ -13,7 +14,7 @@ Facets provide aggregated data based on a search query.
     }
   }
 }
-
+```
 
 ## References
 
