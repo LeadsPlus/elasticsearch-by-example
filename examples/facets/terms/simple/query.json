@@ -5,7 +5,8 @@
   "facets" : {
     "keywords_facet" : {
       "terms" : {
-        "field" : "keywords"
+        "field" : "keywords",
+        "size" : 10
       }
     }
   }
