@@ -1,0 +1,13 @@
+{
+  "query": {
+    "match_all" : {}
+  },
+  "facets" : {
+    "keywords_tags_facet" : {
+      "terms" : {
+        "fields" : ["keywords", "tags"],
+        "size" : 10
+      }
+    }
+  }
+}
