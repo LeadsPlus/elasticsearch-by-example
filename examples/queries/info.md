@@ -7,8 +7,7 @@
 * Does not go through a "query parsing" process.
 * Does not support field name prefixes, wildcard characters, or other “advance” features.
 
-Todo
-
 
 ## References
+
 * [Text Query](http://www.elasticsearch.org/guide/reference/query-dsl/text-query.html)

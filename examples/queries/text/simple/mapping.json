@@ -1,0 +1,8 @@
+{
+  "example" : {
+    "properties" : {
+      "author" : {"type" : "string"},
+      "title"  : {"type" : "string"}
+    }
+  }
+}
