@@ -5,7 +5,7 @@ Facets provide aggregated data based on a search query.
 
 ## Structure
 
-```javascript
+```json
 {
   "query"  : { ... },
   "facets" : {
