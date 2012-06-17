@@ -1,5 +1,7 @@
 # Text Query
 
+A family of text queries that accept text, analyzes it, and constructs a query out of it.
+
 
 ## Properties
 
