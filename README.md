@@ -64,7 +64,7 @@ example directory relativ to the `examples` directory in the root of this projec
 
 You can list all examples by using the `list` parameter:
 
-  bin/run list
+    bin/run list
 
 
 Links
