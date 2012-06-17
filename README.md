@@ -43,7 +43,7 @@ Configuration
 _ElasticSearch by Example_ uses its own [ElasticSearch](http://elasticsearch.org) configuration file stored in `config/elasticsearch.yml`.
 
 To use a remote [ElasticSearch](http://elasticsearch.org) installation
-please customize the `host` and `port` variables in the `bin/run` script.
+please customize the `host` and `port` constants in the `bin/run` script.
 
 
 Usage
