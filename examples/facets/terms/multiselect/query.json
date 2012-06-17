@@ -1,0 +1,41 @@
+{
+  "query" : {
+    "match_all" : {}
+  },
+  "filter" : {
+    "and" : [
+      {
+        "terms" : {
+          "keywords" : ["k01"]
+        }
+      },
+      {
+        "terms" : {
+          "city" : ["Hamburg"]
+        }
+      }
+    ]
+  },
+  "facets" : {
+    "keywords_facet" : {
+      "terms" : {
+        "field" : "keywords"
+      },
+      "facet_filter" : {
+        "terms" : {
+          "keywords" : ["k01"]
+        }
+      }
+    },
+    "city_facet" : {
+      "terms" : {
+        "field" : "city"
+      },
+      "facet_filter" : {
+        "terms" : {
+          "city" : ["Hamburg"]
+        }
+      }
+    }
+  }
+}

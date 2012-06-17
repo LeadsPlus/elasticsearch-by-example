@@ -1,0 +1,10 @@
+{
+  "example" : {
+    "properties" : {
+      "author"   : {"type" : "string"},
+      "title"    : {"type" : "string"},
+      "keywords" : {"type" : "string", "index" : "not_analyzed"},
+      "city"     : {"type" : "string", "index" : "not_analyzed"}
+    }
+  }
+}
