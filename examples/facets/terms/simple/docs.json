@@ -1,0 +1,17 @@
+[
+  {
+    "author"   : "Robert Moszczynski",
+    "title"    : "Example Document 0",
+    "keywords" : ["k01", "k2", "k2", "k2", "k3"]
+  },
+  {
+    "author"   : "Robert Moszczynski",
+    "title"    : "Example Document 1",
+    "keywords" : ["k11", "k12", "k13", "k2", "k3"]
+  },
+  {
+    "author"   : "Robert Moszczynski",
+    "title"    : "Example Document 2",
+    "keywords" : ["k21", "k3"]
+  }
+]

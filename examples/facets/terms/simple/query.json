@@ -1,0 +1,12 @@
+{
+  "query": {
+    "match_all" : {}
+  },
+  "facets" : {
+    "keywords_facet" : {
+      "terms" : {
+        "field" : "keywords"
+      }
+    }
+  }
+}
