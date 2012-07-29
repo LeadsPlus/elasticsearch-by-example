@@ -19,6 +19,12 @@ I have deliberately used raw [JSON](http://www.json.org/) structures to facilita
 it clear. There are no abstractions to hide details.
 
 
+Requirements
+------------
+
+* Ruby 1.9.3+
+
+
 Installation
 ------------
 
