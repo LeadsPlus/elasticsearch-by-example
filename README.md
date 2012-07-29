@@ -7,7 +7,7 @@ _ElasticSearch by Example_ is a simple framework to learn and play with
 It will help you get started in [ElasticSearch](http://elasticsearch.org)
 and provide a sandbox for experimentation and comparison of features.
 
-Each example contains a readme file with the key information on the feature,
+Each example contains a info file with the key information on the feature,
 sample data, a mapping file and a search query. You can see the output directly
 into the console.
 
