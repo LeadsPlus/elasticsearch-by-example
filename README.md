@@ -63,7 +63,7 @@ Console 1:
 
 Console 2:
 
-    bin/run queries/text/simple
+    bin/run queries/text
 
 As you can see the `bin/run` script takes one parameter, a path to a selected
 example directory relative to the `examples` directory in the root of this project.
