@@ -53,7 +53,7 @@ To use _ElasticSearch by Example_ open two console windows.
 
 Console 1:
 
-    foreman start
+    bundle exec foreman start
 
 Console 2:
 
