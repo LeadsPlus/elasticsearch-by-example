@@ -72,6 +72,10 @@ You can list all examples by using the `list` parameter:
 
     bin/run list
 
+To run only the query without create a new index, apply mapping and index documents use the `-q` parameter after example name.
+
+    bin/run queries/text -q
+
 
 Links
 -----

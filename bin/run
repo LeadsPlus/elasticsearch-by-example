@@ -13,6 +13,9 @@ if ARGV[0] == 'list'
   exit
 end
 
+# Run query only. Do not create a new index, apply mapping and index documents.
+run_query_only = ARGV[1] == '-q'
+
 # ElasticSearch location
 HOST  = 'localhost'
 PORT  = '9200'
@@ -34,35 +37,37 @@ type_search_endpoint   = "#{type_url}/_search"
 # Path to example directory read from console parameter
 path = "examples/#{ARGV[0]}"
 
-# Remove index from last run if exists
-index_delete_response_code = HTTParty.delete(index_url).response.code
-index_delete_successful = index_delete_response_code == '200'
-puts "Delete index : #{index_url}" if index_delete_successful
+unless run_query_only
+  # Remove index from last run if exists
+  index_delete_response_code = HTTParty.delete(index_url).response.code
+  index_delete_successful = index_delete_response_code == '200'
+  puts "Delete index : #{index_url}" if index_delete_successful
 
-# Create index. Explicit index creation is especially important when applying
-# a custom mapping.
-HTTParty.put(index_url)
+  # Create index. Explicit index creation is especially important when applying
+  # a custom mapping.
+  HTTParty.put(index_url)
 
-# Apply mapping if present, else ElasticSearch will use default mapping.
-mapping_file_path = "#{path}/mapping.json"
-if File.exists?(mapping_file_path)
-  mapping = File.read(mapping_file_path)
-  HTTParty.put(type_mapping_endpoint, {:body => mapping})
-  puts "Put mapping  : #{type_mapping_endpoint}"
+  # Apply mapping if present, else ElasticSearch will use default mapping.
+  mapping_file_path = "#{path}/mapping.json"
+  if File.exists?(mapping_file_path)
+    mapping = File.read(mapping_file_path)
+    HTTParty.put(type_mapping_endpoint, {:body => mapping})
+    puts "Put mapping  : #{type_mapping_endpoint}"
+  end
+
+  # Index documents
+  docs_file_path = "#{path}/docs.json"
+  docs = JSON.parse(File.read(docs_file_path))
+  docs.each_with_index do |doc, i|
+    document_url = "#{type_url}/#{i}"
+    HTTParty.put(document_url, {:body => doc.to_json})
+    puts "Put document : #{document_url}"
+  end
+
+  # Refresh index to make indexed documents available for search
+  HTTParty.post(index_refresh_endpoint)
+  puts "Post refresh : #{index_refresh_endpoint}"
 end
-
-# Index documents
-docs_file_path = "#{path}/docs.json"
-docs = JSON.parse(File.read(docs_file_path))
-docs.each_with_index do |doc, i|
-  document_url = "#{type_url}/#{i}"
-  HTTParty.put(document_url, {:body => doc.to_json})
-  puts "Put document : #{document_url}"
-end
-
-# Refresh index to make indexed documents available for search
-HTTParty.post(index_refresh_endpoint)
-puts "Post refresh : #{index_refresh_endpoint}"
 
 # Query index
 query_file_path = "#{path}/query.json"
