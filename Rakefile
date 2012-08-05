@@ -48,4 +48,9 @@ namespace :index do
     index_delete_successful = index_delete_response_code == '200'
     puts "Delete index : #{index_url}" if index_delete_successful
   end
+  desc 'Create index'
+  task :create do
+    # Explicit index creation is especially important when applying a custom mapping.
+    HTTParty.put(index_url)
+  end
 end
