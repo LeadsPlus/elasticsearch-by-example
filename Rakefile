@@ -24,9 +24,31 @@ index_refresh_endpoint = "#{index_url}/_refresh"
 type_search_endpoint   = "#{type_url}/_search"
 
 
+##################
+# Helper methods #
+##################
+
+def cluster_node_available? base_url
+  index_health_endpoint = "#{base_url}/_cluster/health"
+  begin
+    HTTParty.get(index_health_endpoint)
+  rescue Errno::ECONNREFUSED
+    return false
+  end
+
+  return true
+end
+
+until cluster_node_available? base_url
+  puts "The cluster node #{base_url} has refused the connection... Probably offline."
+  exit
+end
+
+
 #########
 # Tasks #
 #########
+
 desc 'List available examples'
 task :list do
   Dir.glob("**/query.json") do |example|
