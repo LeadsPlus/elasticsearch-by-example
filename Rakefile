@@ -69,4 +69,9 @@ namespace :index do
       puts "Put document : #{document_url}"
     end
   end
+  desc 'Refresh index'
+  task :refresh do
+    HTTParty.post(index_refresh_endpoint)
+    puts "Post refresh : #{index_refresh_endpoint}"
+  end
 end
