@@ -39,6 +39,16 @@ task :head do
   system("open #{base_url}/_plugin/head/")
 end
 
+desc 'Run example'
+task :run, :example do |t, args|
+  Rake::Task['index:delete'].invoke
+  Rake::Task['index:create'].invoke
+  Rake::Task['index:mapping'].invoke(args[:example])
+  Rake::Task['index:documents'].invoke(args[:example])
+  Rake::Task['index:refresh'].invoke
+  Rake::Task['index:query'].invoke(args[:example])
+end
+
 namespace :index do
   desc 'Delete index'
   task :delete do
