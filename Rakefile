@@ -61,14 +61,20 @@ task :head do
   system("open #{base_url}/_plugin/head/")
 end
 
-desc 'Run example'
-task :run, :example do |t, args|
-  Rake::Task['index:delete'].invoke
-  Rake::Task['index:create'].invoke
-  Rake::Task['index:mapping'].invoke(args[:example])
-  Rake::Task['index:documents'].invoke(args[:example])
-  Rake::Task['index:refresh'].invoke
-  Rake::Task['index:query'].invoke(args[:example])
+namespace :run do
+  desc 'Run complete example'
+  task :all, :example do |t, args|
+    Rake::Task['index:delete'].invoke
+    Rake::Task['index:create'].invoke
+    Rake::Task['index:mapping'].invoke(args[:example])
+    Rake::Task['index:documents'].invoke(args[:example])
+    Rake::Task['index:refresh'].invoke
+    Rake::Task['index:query'].invoke(args[:example])
+  end
+  desc 'Run only query of an example'
+  task :query, :example do |t, args|
+    Rake::Task['index:query'].invoke(args[:example])
+  end
 end
 
 namespace :index do
