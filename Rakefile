@@ -3,20 +3,20 @@ require 'httparty'
 require 'json'
 require 'pp'
 
-# ElasticSearch location
-HOST = 'localhost'
-PORT = 9200
+settings = YAML::load(File.open('config/settings.yml'))
 
-BASE_URL = "http://#{HOST}:#{PORT}"
+# ElasticSearch location
+host = settings['elasticsearch']['host']
+port = settings['elasticsearch']['port']
 
 # Index and document type name
-INDEX = 'elasticsearch-by-example'
-TYPE  = 'example'
+index = settings['elasticsearch']['index']
+type  = settings['elasticsearch']['type']
 
 # URLs
-base_url  = "http://#{HOST}:#{PORT}"
-index_url = "#{base_url}/#{INDEX}"
-type_url  = "#{index_url}/#{TYPE}"
+base_url  = "http://#{host}:#{port}"
+index_url = "#{base_url}/#{index}"
+type_url  = "#{index_url}/#{type}"
 
 # Endpoints
 type_mapping_endpoint  = "#{type_url}/_mapping"
@@ -36,7 +36,7 @@ end
 
 desc 'Open ElasticSearch Head in browser (Mac only!)'
 task :head do
-  system("open #{BASE_URL}/_plugin/head/")
+  system("open #{base_url}/_plugin/head/")
 end
 
 namespace :index do
