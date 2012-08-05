@@ -22,9 +22,6 @@ type_mapping_endpoint  = "#{type_url}/_mapping"
 index_refresh_endpoint = "#{index_url}/_refresh"
 type_search_endpoint   = "#{type_url}/_search"
 
-# Path to examples directory read from console parameter
-path = "examples/#{ARGV[0]}"
-
 
 #########
 # Tasks #
@@ -52,5 +49,14 @@ namespace :index do
   task :create do
     # Explicit index creation is especially important when applying a custom mapping.
     HTTParty.put(index_url)
+  end
+  desc 'Put mapping'
+  task :mapping, :example do |t, args|
+    mapping_file_path = "examples/#{args[:example]}/mapping.json"
+    if File.exists?(mapping_file_path)
+      mapping = File.read(mapping_file_path)
+      HTTParty.put(type_mapping_endpoint, {:body => mapping})
+      puts "Put mapping  : #{type_mapping_endpoint}"
+    end
   end
 end
