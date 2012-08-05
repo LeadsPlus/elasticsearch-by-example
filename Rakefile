@@ -1,6 +1,7 @@
 require 'yaml'
 require 'httparty'
 require 'json'
+require 'pp'
 
 # ElasticSearch location
 HOST = 'localhost'
@@ -73,5 +74,15 @@ namespace :index do
   task :refresh do
     HTTParty.post(index_refresh_endpoint)
     puts "Post refresh : #{index_refresh_endpoint}"
+  end
+  desc 'Query index'
+  task :query, :example do |t, args|
+    query_file_path = "examples/#{args[:example]}/query.json"
+    query = File.read(query_file_path)
+    response = HTTParty.post(type_search_endpoint, {:body => query})
+    puts "Post search  : #{type_search_endpoint}"
+    puts "Result"
+    puts "------"
+    pp response.parsed_response
   end
 end
