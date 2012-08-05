@@ -1,10 +1,10 @@
-ElasticSearch by Example
+elasticsearch by example
 ========================
 
-_ElasticSearch by Example_ is a simple framework to learn and play with
-[ElasticSearch](http://elasticsearch.org).
+_elasticsearch by example_ is a simple framework to learn and play with
+[elasticsearch](http://elasticsearch.org).
 
-It will help you get started in [ElasticSearch](http://elasticsearch.org)
+It will help you get started in [elasticsearch](http://elasticsearch.org)
 and provide a sandbox for experimentation and comparison of features.
 
 Each example contains a info file with the key information on the feature,
@@ -12,17 +12,19 @@ sample data, a mapping file and a search query. You can see the output directly
 into the console.
 
 It is important that the program is kept as simple as possible.
-A [ElasticSearch](http://elasticsearch.org) beginner should easily understand each step.
+A [elasticsearch](http://elasticsearch.org) beginner should easily understand each step.
 
-I have deliberately used raw [JSON](http://www.json.org/) structures to facilitate communication with [ElasticSearch](http://elasticsearch.org) using the
+I have deliberately used raw [JSON](http://www.json.org/) structures to facilitate communication with [elasticsearch](http://elasticsearch.org) using the
 [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) API to make
-it clear. There are no abstractions to hide details.
+it clear.
 
 
 Requirements
 ------------
 
-* Ruby 1.9.3+
+* [Ruby](http://ruby-lang.org)
+* [Java](http://www.java.com)
+* [elasticsearch](http://www.elasticsearch.org)
 
 
 Installation
@@ -34,10 +36,10 @@ Clone the project repository from [GitHub](http://github.com/):
     cd elasticsearch-by-example
     bundle install
 
-If you have already installed [ElasticSearch](http://elasticsearch.org) local
+If you have already installed [elasticsearch](http://elasticsearch.org) local
 or on a remote machine you're done.
 
-To install [ElasticSearch](http://elasticsearch.org) on Mac with
+To install [elasticsearch](http://elasticsearch.org) on Mac with
 [Homebrew](http://mxcl.github.com/homebrew/) type:
 
     brewdle install
@@ -46,42 +48,44 @@ To install [ElasticSearch](http://elasticsearch.org) on Mac with
 Configuration
 -------------
 
-_ElasticSearch by Example_ uses its own [ElasticSearch](http://elasticsearch.org) configuration file stored in `config/elasticsearch.yml`.
+_elasticsearch by example_ uses its own [elasticsearch](http://elasticsearch.org) configuration file stored in `config/elasticsearch.yml`.
 
-To use a remote [ElasticSearch](http://elasticsearch.org) installation
-please customize the `host` and `port` constants in the `bin/run` script.
+To use a remote [elasticsearch](http://elasticsearch.org) installation
+please customize the `host` and `port` values in the `config/settings.yml` script.
 
 
 Usage
 -----
 
-To use _ElasticSearch by Example_ open two console windows.
-
-Console 1:
+If you have not yet run a elasticsearch instance, you can start one:
 
     bundle exec foreman start
 
-Console 2:
+To run an example:
 
-    bin/run queries/text
+    rake run:all[queries/text]
 
-As you can see the `bin/run` script takes one parameter, a path to a selected
+As you can see the `rake run:all` task takes one parameter, a path to a selected
 example directory relative to the `examples` directory in the root of this project.
 
-You can list all examples by using the `list` parameter:
+You can list all examples by using the `list` task:
 
-    bin/run list
+    rake list
 
-To run only the query without create a new index, apply mapping and index documents use the `-q` parameter after example name.
+To run only the query without create a new index, apply mapping and index documents use the `run:query` task:
 
-    bin/run queries/text -q
+    rake run:query[queries/text]
+
+To see all Rake tasks:
+
+    rake -T
 
 
 Links
 -----
 
 * [Project Home](https://github.com/rmoszczynski/elasticsearch-by-example)
-* [ElasticSearch Home](http://www.elasticsearch.org/)
+* [elasticsearch Home](http://www.elasticsearch.org/)
 
 
 Feedback
@@ -93,7 +97,7 @@ You can send feedback via [GitHub Issues](https://github.com/rmoszczynski/elasti
 License
 -------
 
-    ElasticSearch by Example.
+    elasticsearch by example.
 
     All files in this project are licensed under the following license:
 
