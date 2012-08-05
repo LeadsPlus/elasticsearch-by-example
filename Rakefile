@@ -59,4 +59,14 @@ namespace :index do
       puts "Put mapping  : #{type_mapping_endpoint}"
     end
   end
+  desc 'Index documents'
+  task :documents, :example do |t, args|
+    docs_file_path = "examples/#{args[:example]}/docs.json"
+    docs = JSON.parse(File.read(docs_file_path))
+    docs.each_with_index do |doc, i|
+      document_url = "#{type_url}/#{i}"
+      HTTParty.put(document_url, {:body => doc.to_json})
+      puts "Put document : #{document_url}"
+    end
+  end
 end
