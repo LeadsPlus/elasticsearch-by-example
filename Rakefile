@@ -96,3 +96,21 @@ namespace :index do
     pp response.parsed_response
   end
 end
+
+namespace :cluster do
+  desc 'Check cluster health'
+  task :health do
+    index_health_endpoint = "#{base_url}/_cluster/health"
+    index_health_parsed_response = HTTParty.get(index_health_endpoint).parsed_response
+    puts "Status                : #{index_health_parsed_response['status']}"
+    puts "Cluster name          : #{index_health_parsed_response['cluster_name']}"
+    puts "Timed out             : #{index_health_parsed_response['timed_out']}"
+    puts "Number of nodes       : #{index_health_parsed_response['number_of_nodes']}"
+    puts "Number of data nodes  : #{index_health_parsed_response['number_of_data_nodes']}"
+    puts "Active primary shards : #{index_health_parsed_response['active_primary_shards']}"
+    puts "Active shards         : #{index_health_parsed_response['active_shards']}"
+    puts "Relocating shards     : #{index_health_parsed_response['relocating_shards']}"
+    puts "Initializing shards   : #{index_health_parsed_response['initializing_shards']}"
+    puts "Unassigned shards     : #{index_health_parsed_response['unassigned_shards']}"
+  end
+end
