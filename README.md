@@ -63,7 +63,7 @@ If you have not yet run a elasticsearch instance, you can start one:
 
 To run an example:
 
-    rake run:all[queries/text]
+    rake run[queries/text]
 
 As you can see the `rake run:all` task takes one parameter, a path to a selected
 example directory relative to the `examples` directory in the root of this project.
