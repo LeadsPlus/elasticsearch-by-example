@@ -65,7 +65,7 @@ To run an example:
 
     rake run[queries/text]
 
-As you can see the `rake run:all` task takes one parameter, a path to a selected
+As you can see the `rake run` task takes one parameter, a path to a selected
 example directory relative to the `examples` directory in the root of this project.
 
 You can list all examples by using the `list` task:
